@@ -10,9 +10,14 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="container">
     <div class="graph-container"><svg id="graph"></svg></div>
-    <div class="sidebar">
+    <button id='sidebar-toggle' onClick="toggleSidebar()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" stroke-width="3"/>
+      </svg>
+    </button>
+    <div class="sidebar" id="sidebar">
       <div id="nodeInfo" class="node-info" style="display: none;">
         <h3>Node Details</h3>
         <div id="nodeDetails"></div>
@@ -52,10 +57,11 @@
     // Initialize the graph
     svg.attr("viewBox", `0 0 ${width} ${height}`)
       .call(d3.zoom()
-      .scaleExtent([0.5, 3])
-      .on("zoom", (event) => {
+        .scaleExtent([0.5, 3])
+        .on("zoom", (event) => {
           svg.selectAll("g").attr("transform", event.transform);
-      }))
+        })
+      )
     updateGraph()
 </script>
 </body>

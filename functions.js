@@ -119,3 +119,9 @@ function setupDOM(nodeTypes) {
 function capitalize (string) {
   return string.charAt(0).toUpperCase() + string.slice(1) 
 }
+
+function toggleSidebar () {
+  const container = document.getElementById("container")
+  if (container.className.includes('collapse')) container.className = ''
+  else container.className = 'collapse'
+}
